@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Sedang Dalam Perbaikan | Maintenance Mode</title>
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --bg-color: #f8fafc;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .container {
+            max-width: 800px;
+            padding: 2rem;
+            z-index: 1;
+        }
+
+        /* Background Decor */
+        .decor {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.05) 0%, rgba(255, 255, 255, 0) 70%);
+            border-radius: 50%;
+            z-index: -1;
+        }
+        .decor-1 { top: -100px; right: -100px; }
+        .decor-2 { bottom: -100px; left: -100px; }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .logo svg {
+            width: 32px;
+            height: 32px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: -0.025em;
+            color: #0f172a;
+        }
+
+        p {
+            font-size: 1.125rem;
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+            line-height: 1.6;
+        }
+
+        /* Countdown Styles */
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .countdown-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 80px;
+        }
+
+        .countdown-number {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            line-height: 1;
+        }
+
+        .countdown-label {
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            letter-spacing: 0.1em;
+            margin-top: 0.5rem;
+        }
+
+        /* CTA / Subscribe */
+        .notify-box {
+            background: white;
+            padding: 0.5rem;
+            border-radius: 12px;
+            display: flex;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            max-width: 450px;
+            margin: 0 auto;
+        }
+
+        .notify-box input {
+            flex: 1;
+            border: none;
+            padding: 0.75rem 1rem;
+            font-family: inherit;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .notify-box button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .notify-box button:hover {
+            background-color: #1d4ed8;
+        }
+
+        @media (max-width: 640px) {
+            h1 { font-size: 2rem; }
+            .countdown { gap: 1rem; }
+            .countdown-number { font-size: 2rem; }
+            .countdown-item { min-width: 60px; }
+            .notify-box { flex-direction: column; background: transparent; box-shadow: none; gap: 10px; }
+            .notify-box input { background: white; border-radius: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="decor decor-1"></div>
+    <div class="decor decor-2"></div>
+
+    <div class="container">
+        <div class="logo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+            </svg>
+            <span>STARTUP.CO</span>
+        </div>
+
+        <h1>Kami Sedang Memperbarui Pengalaman Anda</h1>
+        <p>Mohon maaf atas ketidaknyamanannya. Tim kami sedang bekerja keras untuk memberikan sesuatu yang luar biasa. Kami akan kembali dalam:</p>
+
+        <div class="countdown" id="countdown">
+            <div class="countdown-item">
+                <span class="countdown-number" id="days">00</span>
+                <span class="countdown-label">Hari</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-number" id="hours">00</span>
+                <span class="countdown-label">Jam</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-number" id="minutes">00</span>
+                <span class="countdown-label">Menit</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-number" id="seconds">00</span>
+                <span class="countdown-label">Detik</span>
+            </div>
+        </div>
+
+        <div class="notify-box">
+            <input type="email" placeholder="Masukkan email Anda..." aria-label="Email">
+            <button type="button">Beri Tahu Saya</button>
+        </div>
+    </div>
+
+    <script>
+        // Set target date: July 9, 2026 00:00:00
+        const targetDate = new Date("July 9, 2026 00:00:00").getTime();
+
+        const updateCountdown = () => {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            if (distance < 0) {
+                document.getElementById("countdown").innerHTML = "<h3>Kami Sudah Kembali!</h3>";
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = days.toString().padStart(2, '0');
+            document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
+            document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
+            document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
+        };
+
+        // Update every second
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+</body>
+</html>
